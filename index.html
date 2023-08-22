@@ -1,0 +1,212 @@
+<!-- WRITTEN BY LUKE SKUTT -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
+<span id="copyright"></span>
+<div id="scanline"></div>
+<span id="input"></span>
+<!-- WRITTEN BY LUKE SKUTT -->
+<style>
+/* WRITTEN BY LUKE SKUTT */
+body {
+margin: 0;
+background-image: radial-gradient(#0c300c, #000);
+text-transform: uppercase;
+padding: 1vw;
+font-family: "VT323";
+overflow-y: auto;
+overflow-x: hidden;
+}
+
+::selection {
+background-color: lime;
+color: #000;
+}
+
+::-webkit-scrollbar {
+display: none;
+}
+
+body:before {
+content: " ";
+display: block;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+background: linear-gradient(to bottom,rgba(18, 16, 16, 0) 50%,rgba(0, 0, 0, 0.20) 50%);
+background-size: 100% 8px;
+z-index: 2;
+}
+
+#copyright,
+.result,
+#input {
+color: lime;
+font-size: 3vw;
+padding-bottom: 2vw;
+z-index: 2;
+animation: textShadow 1.6s infinite;
+}
+
+@keyframes textShadow {
+0% {text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+5% {text-shadow: 2.7928974010788217px 0 1px rgba(0,30,255,0.5), -2.7928974010788217px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+10% {text-shadow: 0.02956275843481219px 0 1px rgba(0,30,255,0.5), -0.02956275843481219px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+15% {text-shadow: 0.40218538552878136px 0 1px rgba(0,30,255,0.5), -0.40218538552878136px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+20% {text-shadow: 3.4794037899852017px 0 1px rgba(0,30,255,0.5), -3.4794037899852017px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+25% {text-shadow: 1.6125630401149584px 0 1px rgba(0,30,255,0.5), -1.6125630401149584px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+30% {text-shadow: 0.7015590085143956px 0 1px rgba(0,30,255,0.5), -0.7015590085143956px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+35% {text-shadow: 3.896914047650351px 0 1px rgba(0,30,255,0.5), -3.896914047650351px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+40% {text-shadow: 3.870905614848819px 0 1px rgba(0,30,255,0.5), -3.870905614848819px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+45% {text-shadow: 2.231056963361899px 0 1px rgba(0,30,255,0.5), -2.231056963361899px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+50% {text-shadow: 0.08084290417898504px 0 1px rgba(0,30,255,0.5), -0.08084290417898504px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+55% {text-shadow: 2.3758461067427543px 0 1px rgba(0,30,255,0.5), -2.3758461067427543px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+60% {text-shadow: 2.202193051050636px 0 1px rgba(0,30,255,0.5), -2.202193051050636px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+65% {text-shadow: 2.8638780614874975px 0 1px rgba(0,30,255,0.5), -2.8638780614874975px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+70% {text-shadow: 0.48874025155497314px 0 1px rgba(0,30,255,0.5), -0.48874025155497314px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+75% {text-shadow: 1.8948491305757957px 0 1px rgba(0,30,255,0.5), -1.8948491305757957px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+80% {text-shadow: 0.0833037308038857px 0 1px rgba(0,30,255,0.5), -0.0833037308038857px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+85% {text-shadow: 0.09769827255241735px 0 1px rgba(0,30,255,0.5), -0.09769827255241735px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+90% {text-shadow: 3.443339761481782px 0 1px rgba(0,30,255,0.5), -3.443339761481782px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+95% {text-shadow: 2.1841838852799786px 0 1px rgba(0,30,255,0.5), -2.1841838852799786px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+100% {text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+}
+
+#input {
+display: none;
+}
+
+#input:before {
+content: ">";
+padding-right: 1vw;
+}
+
+#input:after {
+content: "■";
+font-size: 4vw;
+animation: blink 1s infinite;
+animation-timing-function: step-end;
+-webkit-animation: blink 1s infinite;
+-webkit-animation-timing-function: step-end;
+}
+
+@-webkit-keyframes blink {
+50% {
+opacity: 0;
+}
+}
+
+@keyframes blink {
+50% {
+opacity: 0;
+}
+}
+
+#scanline {
+height: 7%;
+background-color: #232323;
+width: 100%;
+position: fixed;
+top: -15%;
+left: 0;
+opacity: .45;
+box-shadow: 0 1vw 5vw #232323;
+transition: 5s;
+}
+/* WRITTEN BY LUKE SKUTT */
+</style>
+<script>
+// WRITTEN BY LUKE SKUTT
+var copyright = document.getElementById("copyright");
+var input = document.getElementById("input");
+var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890()!@#$%^&*()_+-=[]{}/|'',.?;:"
+document.body.addEventListener("keydown", e => {
+e.preventDefault();
+if (characters.toLowerCase().includes(e.key.toLowerCase()) || e.key === '"') {
+input.textContent += e.key;
+}
+if (e.key === "Backspace") {
+input.textContent = input.textContent.substring(0, input.textContent.length -1);
+}
+if (e.key === "Enter") {
+addResult(input.textContent.trim());
+}
+})
+
+function addResult(code) {
+if (code.toLowerCase() === "quit") {
+var quit = document.getElementById("quit");
+var whiteout = document.getElementById("whiteout");
+quit.style.display = "flex";
+setTimeout(function() {
+whiteout.style.transition = ".15s";
+whiteout.style.width = "95%";
+}, 100)
+setTimeout(function() {
+whiteout.style.transition = ".5s";
+whiteout.style.height = "0";
+document.body.style.cursor = "none";
+}, 500)
+} else if (code !== "") {
+var inputElement = document.createElement("div");
+inputElement.textContent = "> " + code;
+inputElement.className = "result";
+document.body.appendChild(inputElement);
+try {
+eval(code);
+} catch (err) {
+var outputElement = document.createElement("div");
+outputElement.textContent = err;
+outputElement.className = "result";
+document.body.appendChild(outputElement);
+}
+input.textContent = "";
+document.body.appendChild(input);
+window.scrollTo(0, document.body.scrollHeight);
+}
+}
+
+window.onload = function() {
+var message = navigator.platform + " PERSONAL COMPUTER DOS VERSION 1.00 (C) COPYRIGHT IBM CORP 1981";
+var count = 0;
+var interval = setInterval(function() {
+if (count === message.length) {
+clearInterval(interval);
+setTimeout(function() {
+input.style.display = "block";
+}, 3000)
+} else {
+copyright.innerHTML += message[count];
+count += 1;
+}
+}, 100)
+}
+
+setInterval(function() {
+var scanline = document.getElementById("scanline");
+scanline.style.top = "100%";
+setTimeout(function() {
+scanline.style.transition = "0s";
+scanline.style.top = "-15%";
+setTimeout(function() {
+scanline.style.transition = "5s";
+}, 5500)
+}, 5000)
+}, 15000)
+
+console.log = function(message) {
+addConsoleResult(message);
+}
+
+console.error = function(err) {
+addConsoleResult(err);
+}
+
+function addConsoleResult(message) {
+var messageElement = document.createElement("div");
+messageElement.textContent = "CONSOLE: " + message;
+messageElement.className = "result";
+document.body.appendChild(messageElement);
+}
+// WRITTEN BY LUKE SKUTT
+</script>
