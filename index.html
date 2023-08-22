@@ -3,6 +3,9 @@
 <span id="copyright"></span>
 <div id="scanline"></div>
 <span id="input"></span>
+<div id="quit">
+<div id="whiteout"></div>
+</div>
 <!-- WRITTEN BY LUKE SKUTT -->
 <style>
 /* WRITTEN BY LUKE SKUTT */
@@ -112,6 +115,28 @@ left: 0;
 opacity: .45;
 box-shadow: 0 1vw 5vw #232323;
 transition: 5s;
+}
+
+#quit {
+position: absolute;
+top: 0;
+left: 0
+z-index: 3;
+width: 100%;
+height: 100%;
+background-color: #000;
+display: none;
+align-items: center;
+justify-content: center;
+align-items: center;
+}
+
+#quit #whiteout {
+background-color: #fff;
+width: 100%;
+height: 100%;
+transition: 3s;
+z-index: 999;
 }
 /* WRITTEN BY LUKE SKUTT */
 </style>
