@@ -146,10 +146,10 @@ z-index: 999;
 // WRITTEN BY LUKE SKUTT
 var copyright = document.getElementById("copyright");
 var input = document.getElementById("input");
-var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890()!@#$%^&*()_+-=[]{}/|'',.?;:"
+var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890()!@#$%^&*()_+-=[]{}/|'',.?;:";
 document.body.addEventListener("keydown", e => {
 e.preventDefault();
-if (characters.toLowerCase().includes(e.key.toLowerCase()) || e.key === '"') {
+if (characters.toLowerCase().includes(e.key.toLowerCase()) || e.key === '"' || e.key === "|") {
 input.textContent += e.key;
 }
 if (e.key === "Backspace") {
