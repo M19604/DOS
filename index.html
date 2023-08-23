@@ -176,6 +176,13 @@ whiteout.style.transition = ".5s";
 whiteout.style.height = "0";
 document.body.style.cursor = "none";
 }, 500)
+} else if (code.toLowerCase() === "info") {
+$.get("https://ipinfo.io", function(data) {
+var resultElement = document.createElement("div");
+resultElement.innerHTML = "IP:" + data.ip + "<br>HOST-NAME: " + data.hostname + "<br>CITY: " + data.city + "<br>STATE: " + data.region + "<br>COUNTRY: " + data.country + "<br>LOCATION: " + data.loc + "<br>ORG: " + data.org + "<br>ZIP: " + data.postal + "<br>TIMEZONE: " + data.timezone;
+resultElement.className = "result";
+document.body.appendChild(resultElement);
+}, "json")
 } else if (code !== "") {
 var inputElement = document.createElement("div");
 inputElement.textContent = "> " + code;
