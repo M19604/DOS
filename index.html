@@ -183,6 +183,8 @@ resultElement.textContent = "IP: " + data.ip + "\r\nHOST-NAME: " + data.hostname
 resultElement.className = "result";
 document.body.appendChild(resultElement);
 }, "json")
+input.textContent = "";
+document.body.appendChild(input);
 } else if (code !== "") {
 var inputElement = document.createElement("div");
 inputElement.textContent = "> " + code;
@@ -197,7 +199,6 @@ outputElement.className = "result";
 document.body.appendChild(outputElement);
 }
 input.textContent = "";
-input.innerHTML = "";
 document.body.appendChild(input);
 window.scrollTo(0, document.body.scrollHeight);
 }
