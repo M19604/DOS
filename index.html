@@ -179,7 +179,7 @@ document.body.style.cursor = "none";
 } else if (code.toLowerCase() === "info") {
 $.get("https://ipinfo.io", function(data) {
 var resultElement = document.createElement("div");
-resultElement.innerHTML = "IP: " + data.ip + "<br>HOST-NAME: " + data.hostname + "<br>CITY: " + data.city + "<br>STATE: " + data.region + "<br>COUNTRY: " + data.country + "<br>LOCATION: " + data.loc + "<br>ORG: " + data.org + "<br>ZIP: " + data.postal + "<br>TIMEZONE: " + data.timezone;
+resultElement.textContent = "IP: " + data.ip + "\r\nHOST-NAME: " + data.hostname + "\r\nCITY: " + data.city + "\r\nSTATE: " + data.region + "\r\nCOUNTRY: " + data.country + "\r\nLOCATION: " + data.loc + "\r\nORG: " + data.org + "\r\nZIP: " + data.postal + "\r\nTIMEZONE: " + data.timezone;
 resultElement.className = "result";
 document.body.appendChild(resultElement);
 }, "json")
