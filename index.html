@@ -177,12 +177,12 @@ whiteout.style.height = "0";
 document.body.style.cursor = "none";
 }, 500)
 } else if (code.toLowerCase() === "info") {
-$.getJSON("https://api.ipify.org/?format=json", function(data) {
+$.get("https://ipinfo.io", function(data) {
 var resultElement = document.createElement("div");
 resultElement.textContent = "IP: " + data.ip + "\r\nHOST-NAME: " + data.hostname + "\r\nCITY: " + data.city + "\r\nSTATE: " + data.region + "\r\nCOUNTRY: " + data.country + "\r\nLOCATION: " + data.loc + "\r\nORG: " + data.org + "\r\nZIP: " + data.postal + "\r\nTIMEZONE: " + data.timezone;
 resultElement.className = "result";
 document.body.appendChild(resultElement);
-})
+}, "json")
 input.textContent = "";
 document.body.appendChild(input);
 } else if (code !== "") {
